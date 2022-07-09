@@ -1,16 +1,14 @@
 import uvicorn
 from fastapi import FastAPI
 from PropertyVariables import ProperyPricePred
-import numpy as np 
-import pickle 
-import pandas as pd 
-import joblib 
+import pandas as pd
+import joblib
 
 # 1.  Creating the App object
 PropertyPricePredApp = FastAPI()
 
 # 2.  Load the model from disk
-fileName = 'model/property_price_prediction_voting.sav'
+fileName = '../model/property_price_prediction_voting.sav'
 loaded_model = joblib.load(fileName)
 
 # pickle_in = open("model/regressor.pkl","rb")
@@ -34,3 +32,9 @@ def predict_price(data: ProperyPricePred):
     prediction = loaded_model.predict(data)
     print(str(prediction))
     return str(prediction)
+
+
+# # 5. Run the API with uvicorn
+# #    Will run on http://127.0.0.1:8000
+if __name__ == '__main__':
+    uvicorn.run("app:PropertyPricePredApp",host='127.0.0.1', port=8005, reload=True, debug=True, workers=3)
