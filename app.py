@@ -8,7 +8,7 @@ import joblib
 PropertyPricePredApp = FastAPI()
 
 # 2.  Load the model from disk
-fileName = '../model/property_price_prediction_voting.sav'
+fileName = 'property_price_prediction_voting.sav'
 loaded_model = joblib.load(fileName)
 
 # pickle_in = open("model/regressor.pkl","rb")
