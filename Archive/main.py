@@ -1,11 +1,11 @@
-# from fastapi import FastAPI
+from fastapi import FastAPI
 
-# app = FastAPI()
+app = FastAPI()
 
 
-# @app.get("/item/{item_id}")
-# def read_item(item_id: int):
-#     return {"item": item_id}
+@app.get("/item/{item_id}")
+def read_item(item_id: int):
+    return {"item": item_id, "value": "Hello World!"}
 
 ##-------------------------------------------------------------------------------------
 ## Order is important if a route has same name

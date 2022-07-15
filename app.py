@@ -21,7 +21,7 @@ def index():
     return {'message': 'Hello, World!'}
 
 # 4. Expose the prediction functionality, make a prediction from the passed
-#    JSON data and return the predicted price with the confidence
+#    JSON data and return the predicted price with the confidence (http://127.0.0.1:8000/predict)
 @PropertyPricePredApp.post('/predict')
 def predict_price(data: ProperyPricePred):
     data = data.dict()
@@ -35,6 +35,6 @@ def predict_price(data: ProperyPricePred):
 
 
 # # 5. Run the API with uvicorn
-# #    Will run on http://127.0.0.1:8000
+# #    Will run on http://127.0.0.1:8005
 if __name__ == '__main__':
     uvicorn.run("app:PropertyPricePredApp",host='127.0.0.1', port=8005, reload=True, debug=True, workers=3)
